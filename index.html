@@ -11,70 +11,22 @@
             color: #333;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         header {
             background-color: #333;
             color: #fff;
             padding: 1rem 0;
             text-align: center;
+            flex-shrink: 0;
         }
         .container {
             width: 80%;
             margin: 0 auto;
             padding: 2rem 0;
+            flex-grow: 1;
         }
         .blog-post {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-bottom: 2rem;
-            padding: 1rem;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .blog-post h2 {
-            margin-top: 0;
-        }
-        .blog-post p {
-            line-height: 1.6;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-        .social-links a {
-            color: #fff;
-            margin: 0 0.5rem;
-            text-decoration: none;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Мой Технический Блог</h1>
-    </header>
-
-    <div class="container">
-        <div class="blog-post">
-            <h2>Работы на 3D-принтере</h2>
-            <p>Здесь я делюсь своими проектами, выполненными на 3D-принтере. Я создаю различные модели и детали, от прототипов до финальных продуктов. Следите за обновлениями, чтобы видеть последние проекты и узнавать о процессе их создания.</p>
-        </div>
-        <div class="blog-post">
-            <h2>Ремонт мелкой техники</h2>
-            <p>В этой части блога я рассказываю о ремонте мелкой техники. Вы найдете подробные инструкции и советы по ремонту различных устройств, от домашних приборов до электроники. Узнайте, как вернуть к жизни вашу технику!</p>
-        </div>
-    </div>
-
-    <footer>
-        <div class="social-links">
-            <a href="https://vk.com/yourprofile" target="_blank">VK</a> | 
-            <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
-        </div>
-        <p>&copy; 2024 Мой Технический Блог</p>
-    </footer>
-</body>
-</html>
+       
