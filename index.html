@@ -11,17 +11,43 @@
             color: #333;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         header {
             background-color: #333;
             color: #fff;
             padding: 1rem 0;
             text-align: center;
+            flex-shrink: 0;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
         }
         .container {
             width: 80%;
             margin: 0 auto;
             padding: 2rem 0;
+            flex-grow: 1;
+        }
+        .blog-section {
+            display: none;
+        }
+        .blog-section.active {
+            display: block;
         }
         .blog-post {
             background-color: #fff;
@@ -37,14 +63,19 @@
         .blog-post p {
             line-height: 1.6;
         }
+        .blog-post img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1rem 0;
+        }
         footer {
             background-color: #333;
             color: #fff;
             text-align: center;
             padding: 1rem 0;
-            position: fixed;
+            flex-shrink: 0;
             width: 100%;
-            bottom: 0;
         }
         .social-links a {
             color: #fff;
@@ -58,23 +89,95 @@
         <h1>Мой Технический Блог</h1>
     </header>
 
+    <nav>
+        <a href="#" class="nav-link" data-section="3d-printing">3D-принтеры</a>
+        <a href="#" class="nav-link" data-section="repairs">Ремонт</a>
+    </nav>
+
     <div class="container">
-        <div class="blog-post">
-            <h2>Работы на 3D-принтере</h2>
-            <p>Здесь я делюсь своими проектами, выполненными на 3D-принтере. Я создаю различные модели и детали, от прототипов до финальных продуктов. Следите за обновлениями, чтобы видеть последние проекты и узнавать о процессе их создания.</p>
+        <div id="3d-printing" class="blog-section">
+            <div class="blog-post">
+                <h2>Работы на 3D-принтере</h2>
+                <p>Здесь я делюсь своими проектами, выполненными на 3D-принтере. Я создаю различные модели и детали, от прототипов до финальных продуктов. Следите за обновлениями, чтобы видеть последние проекты и узнавать о процессе их создания.</p>
+                <img src="https://example.com/ender3s1.jpg" alt="3D-принтер Ender 3 S1">
+            </div>
         </div>
-        <div class="blog-post">
-            <h2>Ремонт мелкой техники</h2>
-            <p>В этой части блога я рассказываю о ремонте мелкой техники. Вы найдете подробные инструкции и советы по ремонту различных устройств, от домашних приборов до электроники. Узнайте, как вернуть к жизни вашу технику!</p>
+        <div id="repairs" class="blog-section">
+            <div class="blog-post">
+                <h2>Ремонт мелкой техники</h2>
+                <p>В этой части блога я рассказываю о ремонте мелкой техники. Вы найдете подробные инструкции и советы по ремонту различных устройств, от домашних приборов до электроники. Узнайте, как вернуть к жизни вашу технику!</p>
+            </div>
         </div>
     </div>
 
     <footer>
         <div class="social-links">
-            <a href="https://vk.com/yourprofile" target="_blank">VK</a> | 
+            <a href="https://vk.com/belogurov" target="_blank">VK</a> | 
             <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
         </div>
         <p>&copy; 2024 Мой Технический Блог</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.blog-section');
+
+            links.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const sectionId = link.getAttribute('data-section');
+                    sections.forEach(section => {
+                        if (section.id === sectionId) {
+                            section.classList.add('active');
+                        } else {
+                            section.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+            // Показать первую секцию по умолчанию
+            if (sections.length > 0) {
+                sections[0].classList.add('active');
+            }
+        });
+
+        const blogPosts = {
+            '3d-printing': [
+                {
+                    title: 'Новый проект на 3D-принтере',
+                    content: 'Недавно я завершил новый проект, который включает создание уникальной детали для домашнего использования.'
+                }
+            ],
+            'repairs': [
+                {
+                    title: 'Ремонт кухонного миксера',
+                    content: 'Недавно я отремонтировал кухонный миксер, который перестал работать. Вот как это было сделано...'
+                }
+            ]
+        };
+
+        Object.keys(blogPosts).forEach(sectionId => {
+            const sectionElement = document.getElementById(sectionId);
+            if (sectionElement) {
+                blogPosts[sectionId].forEach(post => {
+                    const postElement = document.createElement('div');
+                    postElement.className = 'blog-post';
+
+                    const titleElement = document.createElement('h2');
+                    titleElement.textContent = post.title;
+
+                    const contentElement = document.createElement('p');
+                    contentElement.textContent = post.content;
+
+                    postElement.appendChild(titleElement);
+                    postElement.appendChild(contentElement);
+
+                    sectionElement.appendChild(postElement);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
