@@ -45,15 +45,19 @@
         }
         .blog-section {
             display: none;
+            background-size: cover;
+            background-position: center;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
         }
         .blog-section.active {
             display: block;
         }
         .blog-post {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.9);
             border: 1px solid #ddd;
             border-radius: 5px;
-            margin-bottom: 2rem;
             padding: 1rem;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -62,12 +66,6 @@
         }
         .blog-post p {
             line-height: 1.6;
-        }
-        .blog-post img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 1rem 0;
         }
         footer {
             background-color: #333;
@@ -95,12 +93,11 @@
     </nav>
 
     <div class="container">
-        <div id="3d-printing" class="blog-section">
+        <div id="3d-printing" class="blog-section" style="background-image: url('https://example.com/ender3s1.jpg');">
             <!-- Описание раздела -->
             <div class="blog-post">
                 <h2>Работы на 3D-принтере</h2>
                 <p>Здесь я делюсь своими проектами, выполненными на 3D-принтере. Я создаю различные модели и детали, от прототипов до финальных продуктов. Следите за обновлениями, чтобы видеть последние проекты и узнавать о процессе их создания.</p>
-                <img src="https://cdn03.plentymarkets.com/ioseuwg7moqp/item/images/27345/full/Ender-3-S1-Pro-Ender-3S1Pro-27345.png" alt="3D-принтер Ender 3 S1">
             </div>
         </div>
         <div id="repairs" class="blog-section">
